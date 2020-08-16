@@ -1,0 +1,33 @@
+<app-student [students]="data" *ngIf="authUser.role.name == 'staff'"></app-student>
+<app-staff [staffs]="data" *ngIf="authUser.role.name == 'admin'"></app-staff>
+<div class="row" *ngIf="authUser.role.name == 'student'">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Mark Details</h3>
+
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Subject</th>
+              <th>Mark</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let mark of data">
+              <td>{{ mark.student.name }}</td>
+              <td>{{ mark.subject.name }}</td>
+              <td>{{ mark.mark }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+  </div>
+</div>
